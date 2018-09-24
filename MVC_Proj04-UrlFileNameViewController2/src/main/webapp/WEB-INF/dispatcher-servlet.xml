@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd">
+
+	<!-- Controller configuration -->
+	<!-- <bean id="mc" class="com.bi.controller.HomeController"></bean> -->
+	<bean id="wc" class="com.bi.controller.WishController"></bean>
+	<!-- FileNameUrlViewController configuration -->
+	<bean id="fnuvc" class="org.springframework.web.servlet.mvc.UrlFilenameViewController">
+		
+	</bean>
+	<!-- Handler mapping configuration -->
+	<bean class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+		<property name="mappings">
+			<props>
+				<prop key="/wish.htm">wc</prop>
+				<!-- <prop key="/home.htm">mc</prop>
+				<prop key="/contact.htm">pvc1</prop>
+				<prop key="/about.htm">pvc2</prop> -->
+			</props>
+		</property>
+		<property name="urlMap">
+			<map>
+				<entry key="*.htm">
+					<ref bean="fnuvc"/>
+				</entry>
+			</map>
+		</property>
+	</bean>
+	
+	<!-- ViewResolver -->
+	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix" value="/WEB-INF/pages/"/>
+		<property name="suffix" value=".jsp"></property>
+	</bean>
+</beans>
