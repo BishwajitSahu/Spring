@@ -1,0 +1,1 @@
+select empno,ename,job,sal,deptno,mgr from emp where((empno is not null and empno=7499) or (ename is not null and ename='SMITH') or (job is not null and job='ANALYST') or (sal is not null and sal=2975));

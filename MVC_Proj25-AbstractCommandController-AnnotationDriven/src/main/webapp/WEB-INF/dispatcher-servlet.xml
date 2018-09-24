@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+
+	<!-- SimpleUrlHandlerMapping cfg -->
+	<bean class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+		<property name="mappings">
+			<props>
+				<prop key="form.htm">welcome</prop>
+				
+			</props>
+		</property>
+	</bean>
+	
+	<!-- RequestMappingHandlerMapping cfg -->
+	<bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping"/>
+	
+	<!-- Controllers -->
+	<!-- ParameterizableViewController -->
+	<bean id="welcome" class="org.springframework.web.servlet.mvc.ParameterizableViewController">
+		<property name="viewName" value="form"></property>
+	</bean>
+	
+	<context:component-scan base-package="com.bi.controller"/>
+	
+	<!-- view resolver cfg -->
+	<bean id="vr" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix" value="/WEB-INF/pages/"/>
+		<property name="suffix" value=".jsp"></property>
+	</bean>
+		
+</beans>
