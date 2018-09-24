@@ -1,0 +1,9 @@
+ create table mvc_medplus_store(mid number(3) primary key,medname varchar2(10), price number(3),mfgdate date,expiry date);
+ 
+ 
+       MID MEDNAME         PRICE MFGDATE   EXPIRY
+---------- ---------- ---------- --------- ---------
+       102 crosin            125 12-JAN-18 25-FEB-20
+       106 disprin           150 14-MAR-17 25-JUN-19
+       107 namcold            50 25-APR-18 25-JUN-19
+       108 sumocold           50 25-APR-18 25-JUN-19
