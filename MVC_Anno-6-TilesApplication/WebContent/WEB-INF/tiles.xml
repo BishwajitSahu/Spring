@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN" "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+	
+	<tiles-definitions>
+		<!-- BaseDefinition configuration -->
+		<definition name="baseDefinition" template="/WEB-INF/pages/layout.jsp">
+			<put-attribute name="title" value=""></put-attribute>
+			<put-attribute name="header" value="/WEB-INF/pages/header.jsp"></put-attribute>
+			<put-attribute name="left" value="/WEB-INF/pages/left.jsp"></put-attribute>
+			<put-attribute name="body" value=""></put-attribute>
+			<put-attribute name="footer" value="/WEB-INF/pages/footer.jsp"></put-attribute>
+		</definition>
+		
+		<!-- HomePage definition configuration -->
+		<definition name="homeDef" extends="baseDefinition">
+			<put-attribute name="title" value="HOME"></put-attribute>
+			<put-attribute name="body" value="/WEB-INF/pages/home.jsp"></put-attribute>
+		</definition>
+		
+		<!-- java page definition configuration -->
+		<definition name="javaDef" extends="baseDefinition">
+			<put-attribute name="title" value="java"></put-attribute>
+			<put-attribute name="body" value="/WEB-INF/pages/java.jsp"></put-attribute>
+		</definition>
+		
+		<!-- dot net page definition configuration -->
+		<definition name="dotNetDef" extends="baseDefinition">
+			<put-attribute name="title" value="dotNet"></put-attribute>
+			<put-attribute name="body" value="/WEB-INF/pages/dot_net.jsp"></put-attribute>
+		</definition>
+		
+		<!-- python definition configuration -->
+		<definition name="pythonDef" extends="baseDefinition">
+			<put-attribute name="title" value="python"></put-attribute>
+			<put-attribute name="body" value="/WEB-INF/pages/python.jsp"></put-attribute>
+		</definition>
+		
+	</tiles-definitions>
