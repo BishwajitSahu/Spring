@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+	<!-- HandlerMapping configuration -->
+	<bean class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+		<property name="mappings">
+			<props>
+				<prop key="form.htm">sfc</prop>
+			</props>
+		</property>
+	</bean>
+	
+	<!-- ResourceBundleMessageSource configuration -->
+	<bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
+		<property name="basename" value="com/bi/validations/errorvalidations"/>
+	</bean>
+	
+	<!-- Validator configuration -->
+	<bean id="validator" class="com.bi.validations.StudentValidator"/>
+	
+	<!-- SimpleFormController -->
+	<bean id="sfc" class="com.bi.controller.FormController">
+		<property name="validator" ref="validator"/>
+		<property name="commandName" value="command"/>
+		<property name="commandClass" value="com.bi.command.MyCommand"/>
+		<property name="formView" value="form"></property>
+		<property name="successView" value="result"/>
+		<constructor-arg ref="stService"/>
+	</bean>
+	
+	<!-- ViewResolver configuration -->	
+	<bean id="vr" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix" value="/WEB-INF/pages/"/>
+		<property name="suffix" value=".jsp"/>
+	</bean>
+</beans>

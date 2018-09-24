@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+	<!-- SimpleUrlHandlerMapping cfg -->
+	<bean class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+		<property name="mappings">
+			<props>
+				<prop key="form.htm">welcome</prop>
+				<prop key="commandController.htm">controller</prop>
+			</props>
+		</property>
+	</bean>
+	
+	<!-- Controllers -->
+	<bean id="welcome" class="org.springframework.web.servlet.mvc.ParameterizableViewController">
+		<property name="viewName" value="form"></property>
+	</bean>
+	<bean id="controller" class="com.bi.controller.EmployeeSearchController">
+		<constructor-arg ref="employeeService"/>
+		<property name="commandClass" value="com.bi.command.EmployeeCommand"/>
+		<!-- <property name="commandName" value="cmd"/> -->
+	</bean>
+	
+	<!-- view resolver cfg -->
+	<bean id="vr" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix" value="/WEB-INF/pages/"/>
+		<property name="suffix" value=".jsp"></property>
+	</bean>
+		
+</beans>
