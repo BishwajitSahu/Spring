@@ -1,0 +1,46 @@
+SQL> create table users(uname varchar2(15) primary key, pwd varchar2(15),status number(2));
+
+Table created.
+
+SQL> create table users_role(uname varchar2(15) references users(uname),role varchar2(15));
+
+Table created.
+
+
+SQL> desc users;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ UNAME                                     NOT NULL VARCHAR2(15)
+ PWD                                                VARCHAR2(15)
+ STATUS                                             NUMBER(2)
+
+SQL> desc users_role;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ UNAME                                              VARCHAR2(15)
+ ROLE                                               VARCHAR2(15)
+
+ 
+ 
+ 
+ 
+ 
+ SQL> select * from users;
+
+UNAME           PWD                 STATUS
+--------------- --------------- ----------
+raja            {noop}raja               1
+rani            {noop}rani               1
+biswa           {noop}biswa              1
+
+
+
+
+
+SQL> select * from users_role;
+
+UNAME           ROLE
+--------------- ---------------
+raja            ROLE_CUSTOMER
+rani            ROLE_MANAGER
+biswa           ROLE_CLERK

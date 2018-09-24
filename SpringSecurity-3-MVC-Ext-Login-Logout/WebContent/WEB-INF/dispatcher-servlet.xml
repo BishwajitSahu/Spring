@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd">
+
+	<!-- Handler mapping -->
+	<bean class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+		<property name="mappings">
+			<props>
+				<prop key="/home.htm">pvc</prop>
+				<prop key="/getBal.htm">getBal</prop>
+				<prop key="/access_Denie.htm">pvc2</prop>
+				<prop key="/max_session.htm">pvc3</prop>
+				<prop key="/login.htm">pvc4</prop>
+			</props>
+		</property>
+	</bean>
+	
+	
+	 <!-- Controller configurations -->
+	 <bean id="pvc" class="org.springframework.web.servlet.mvc.ParameterizableViewController">
+	 	<property name="viewName" value="home"/>
+	 </bean>
+	 <bean id="pvc2" class="org.springframework.web.servlet.mvc.ParameterizableViewController">
+		<property name="viewName" value="access_denied"/>	 
+ 	 </bean>
+ 	 <bean id="pvc3" class="org.springframework.web.servlet.mvc.ParameterizableViewController">
+		<property name="viewName" value="max_session"/>	 
+ 	 </bean>
+ 	 <bean id="pvc4" class="org.springframework.web.servlet.mvc.ParameterizableViewController">
+		<property name="viewName" value="login"/>	 
+ 	 </bean>
+	 <bean id="getBal" class="com.bi.controller.GetBalanceController"/>
+	 
+	 
+	 
+	  <!-- ViewResolver configuration -->
+	  <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+	  	<property name="prefix" value="/WEB-INF/pages/"/>
+	  	<property name="suffix" value=".jsp"/>
+	  </bean>
+	
+	
+</beans>
