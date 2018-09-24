@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+	
+	<!-- Handlermapping configuration -->
+	<bean id="hr" class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+		<property name="mappings">
+			<props>
+				<prop key="/home.htm">pvc</prop>
+				<prop key="/mac.htm">mac</prop>
+			</props>
+		</property>
+	</bean>
+	
+	<!-- Controllers configuration -->
+	<bean id="pvc" class="org.springframework.web.servlet.mvc.ParameterizableViewController">
+		<property name="viewName" value="home"/>
+	</bean>
+
+	<bean id="mpr" class="org.springframework.web.servlet.mvc.multiaction.ParameterMethodNameResolver">
+		<property name="paramName" value="s"/>
+		<property name="defaultMethodName" value="invalid"/>
+	</bean> 
+	
+	<!-- MultiActionController configuraiton -->
+	<bean id="mac" class="com.bi.controller.MyMultiActionController">
+		<property name="methodNameResolver" ref="mpr"/>
+	</bean>
+	
+	<!-- ViewResolver -->
+	<bean id="vr" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix" value="/WEB-INF/pages/"/>
+		<property name="suffix" value=".jsp"/>
+	</bean>
+</beans>
