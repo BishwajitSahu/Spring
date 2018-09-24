@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+	
+	<!-- Handler mapping configuration -->
+	<bean id="rm" class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+		<property name="mappings">
+			<props>
+				<prop key="home.htm">home</prop>
+				<prop key="get_all_student.htm">StudentListController</prop>
+				<prop key="edit.htm">edit</prop>				
+			</props>
+		</property>
+	</bean>
+
+	<!-- controller configurations -->
+	<bean id="home" class="org.springframework.web.servlet.mvc.ParameterizableViewController">
+		<property name="viewName" value="home"/>
+	</bean>
+	
+	<bean id="StudentListController" class="com.bi.controller.StudentListController">
+		<constructor-arg ref="studentService"/>
+	</bean>
+	
+	<!-- EditController configuration -->
+	<bean id="edit" class="com.bi.controller.EditController">
+		<property name="formView" value="edit_form"/>
+		<property name="commandName" value="stCmd"/>
+		<property name="commandClass" value="com.bi.command.StudentCommand"/>
+		<constructor-arg ref="studentService"/>
+	</bean>
+	
+	<!-- ViewResolver configuration -->
+	<bean id="vr" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix" value="/WEB-INF/pages/"/>
+		<property name="suffix" value=".jsp"/>
+	</bean>
+
+</beans>
