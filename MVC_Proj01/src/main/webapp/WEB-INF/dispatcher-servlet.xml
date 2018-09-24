@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd">
+<!-- handler/controller config -->
+<bean id="mc" class="com.bi.controller.MyController"/>
+<bean id="wc" class="com.bi.controller.WishController"/>
+<!-- Handller mapping configuration -->
+<bean id="hm" class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+	<property name="mappings">
+		<props>
+			<prop key="anything.htm">mc</prop>
+			<prop key="anything2.htm">wc</prop>
+		</props>
+	</property>
+</bean>
+<bean id="vr" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+	<property name="prefix" value="/WEB-INF/pages/"/>
+	<property name="suffix" value=".jsp"/>
+</bean>
+</beans>
