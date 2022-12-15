@@ -84,6 +84,6 @@
   </build>
   <properties>
   	<failOnMissingWebXml>false</failOnMissingWebXml>
-  	<sfversion>5.0.3.RELEASE</sfversion>
+  	<sfversion>5.2.20.RELEASE</sfversion>
   </properties>
 </project>
