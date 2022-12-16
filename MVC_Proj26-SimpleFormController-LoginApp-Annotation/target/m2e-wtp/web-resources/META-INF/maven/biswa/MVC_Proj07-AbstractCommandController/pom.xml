@@ -64,6 +64,6 @@
     <finalName>MVC_Proj07-AbstractCommandController</finalName>
   </build>
   <properties>
-  	<sfversion>4.2.2.RELEASE</sfversion>
+  	<sfversion>5.2.20.RELEASE</sfversion>
   </properties>
 </project>
